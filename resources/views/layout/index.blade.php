@@ -341,12 +341,12 @@
     <div class = "preview-medias-container" style = "overflow-y: auto; padding-top: 30px; padding-bottom: 30px">
       <span class = "close">&times;</span>
       <div class = "content-container container">
-        <img src="http://127.0.0.1:8000/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="http://127.0.0.1:8000/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="http://127.0.0.1:8000/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="http://127.0.0.1:8000/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="http://127.0.0.1:8000/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="http://127.0.0.1:8000/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
+        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
+        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
+        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
+        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
+        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
+        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
       </div>
     </div>
 
