@@ -207,7 +207,7 @@ class PostsController extends Controller
             $ids = json_decode($post->get()[0]['image_public_id']);
 
             foreach($ids as $id){
-                $cloudinary->uploadApi()->destroy($id)
+                $cloudinary->uploadApi()->destroy($id);
             }
         }
 
