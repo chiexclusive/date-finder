@@ -210,7 +210,7 @@
                                             </form>
                                         </li>
                                     @else
-                                      <li class = "message" data-id = "{{$post->user_id}}"><a>Message</a></li>
+                                      <li class = "message message-user" data-id = "{{$post->user_id}}"><a>Message</a></li>
                                     @endif
                               
                                     

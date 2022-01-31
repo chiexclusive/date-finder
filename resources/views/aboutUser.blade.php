@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group gender">
                   <span class="custom-label"><strong>I am a: </strong></span>
-                  <span>{{ucwords($user->gender)}}</span>
+                  <span>{{$user->gender == "on" ? "Male": Female}}</span>
                 </div>
                 <div class="row">
                   <div class="form-group col-xs-6">
