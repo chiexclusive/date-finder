@@ -66,7 +66,6 @@ imageField.on("change", (event) => {
 videoField.on("change", (event) => {
 	$(".create-post-log").html("");
 	let files = event.target.files;
-	console.log(files)
 	postVideo= [...postVideo, ...files];
 	previewLoadedMedia("video", files);
 	activatePublishButton();
@@ -127,8 +126,6 @@ function previewLoadedMedia(type, files){
 	//Get previous content
 	let container = type === "video" ? videoPreviewContainer : imagePreviewContainer;
 
-	console.log(" i got here ")
-	console.log(previewContent)
 
 	if($(container).html().toString().trim().length === 0) $(container).append($(previewContent));
 	else $(previewContent).insertBefore($(container).children(":first"));

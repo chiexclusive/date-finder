@@ -270,7 +270,7 @@ function renderChat()
 		chatData.forEach((item, index) => {
 			let refId = item.first_user_id != userId ? item.first_user_id : item.second_user_id;
 			let messages = JSON.parse(item.messages);
-				console.log(messages)
+
 			let lastMessage = messages[messages.length - 1].message;
 			let unread = 0;
 
@@ -458,7 +458,7 @@ function scrollToLastRead(id){
 				if(message.receiver == userId && message.read == false && scrolled == false){
 					//Get element
 					let elem = $("#message_"+ messageId);
-					// return console.log(elem)
+
 
 					let parent = $(".chat-content-section").find(".scroll-wrapper");
 
@@ -483,7 +483,7 @@ function scrollToLastRead(id){
 function scrollToLast(){
 	let parent = $(".chat-content-section").find(".scroll-wrapper");
 	parent[0].scrollTo(0, parent[0].scrollHeight)
-	console.log(parent[0].scrollHeight)
+
 }
 
 
@@ -520,7 +520,7 @@ function updateRead(id, target)
 {
 	let chatId = id;
 	let msgId = target.id.replace("message_", "");
-	console.log(chatId, msgId);
+
 
 	let url = `/users/chats/${chatId}/message/${msgId}/update`
 	let config = {
@@ -545,7 +545,6 @@ function filterChats(filter){
 
 	chats.forEach((item, index) => {
 		$(item).hide();
-		console.log($(item).find(".msg-preview").find("h6").text())
 		if($(item).find(".msg-preview").find("h6").text().toLowerCase().includes(filter.toLowerCase())) $(item).show();
 	})
 }
