@@ -352,7 +352,7 @@ function  loadChatContent (endUserId)
 
 				chatHtml += `
 					<li class="${item.sender == userId? 'right': 'left'}" id = "message_${index}">
-			            <img src="${item.sender != userId? users[refId].image !== null ? '/storage/images/profile/' + users[refId].image : '/images/default_profile_image.png':   users[userId].image !== null ? '/storage/images/profile/' + users[userId].image : '/images/default_profile_image.png'}" alt="" class="profile-photo-sm ${item.sender == userId? 'pull-right': 'pull-left'}">
+			            <img src="${item.sender != userId? users[refId].image !== null ? users[refId].image : '/images/default_profile_image.png':   users[userId].image !== null ? users[userId].image : '/images/default_profile_image.png'}" alt="" class="profile-photo-sm ${item.sender == userId? 'pull-right': 'pull-left'}">
 			            <div class="chat-item">
 			              <div class="chat-item-header">
 			                <h5>${item.sender != userId ? window.ucwords(users[refId].firstname + " " + users[refId].lastname) : window.ucwords(users[userId].firstname + " " + users[userId].lastname)}</h5>
