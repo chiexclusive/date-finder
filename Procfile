@@ -1,1 +1,1 @@
-web: composer install && php artisan migrate && php artisan serve
+web: php artisan migrate && php artisan serve
