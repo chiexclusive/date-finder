@@ -145,7 +145,7 @@ class PostsController extends Controller
         auth()->user()->posts()->create([
             "message" => $request->message,
             "image" => json_encode($imageNames),
-            "image_public_id" => json_decode($imagePublicIds),
+            "image_public_id" => json_encode($imagePublicIds),
             "video" => json_encode($videoNames),
             "video_public_id" => json_encode($videoPublicIds),
             "visibility" => $request->postVisibility
