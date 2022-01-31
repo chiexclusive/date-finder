@@ -27,8 +27,8 @@
                            @endif
                           
                         </div>
-                        <div class="card-info" style = "position: relative">
-                           <img src="{{$friend->image === null ? asset('/images/default_profile_image.png') : $friend->image}}" alt="profile image" alt="user" class="profile-photo-lg" style = "   object-fit: cover; margin-top: -60px; border: 7px solid white; width: 80px; height: 80px; overflow: hidden;">
+                        <div class="card-info" >
+                           <img src="{{$friend->image === null ? asset('/images/default_profile_image.png') : $friend->image}}" alt="profile image" alt="user" class="profile-photo-lg" >
     
                           <div class="friend-info">
                             @auth
