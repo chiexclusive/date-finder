@@ -288,7 +288,7 @@
       	<div class="row">
           <div class="footer-wrapper">
             <div class="col-md-3 col-sm-3">
-              <a href=""><img src="images/logo.png" alt="" class="footer-logo"> Friend Finder</a>
+              <a href=""><img src="images/logo.png" alt="" class="footer-logo"> Date Finder</a>
               <ul class="list-inline social-icons">
               	<li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
               	<li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
