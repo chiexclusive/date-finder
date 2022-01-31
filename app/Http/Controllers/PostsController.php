@@ -127,7 +127,7 @@ class PostsController extends Controller
                 $imageName = preg_match('(image)', $mime) ? time() : null;
                 $videoName = !preg_match('(image)', $mime) ? time() : null;
 
-                $uploaded = $cloudinary->uploadApi()->upload($file->getPathName());
+                $uploaded = $cloudinary->uploadApi()->upload($file->getPathName(), ["resource_type" => "auto"]);
 
                 if($imageName !== null){
                     array_push($imageNames, $uploaded['secure_url']);
