@@ -25,7 +25,7 @@ $(document).ready(() => {
 	$(".mobile-chat-toggle").click(() => {
 		$(".chat-section").removeClass("cover");
 		$(".mobile-message-toggler").addClass("appear");
-		$(".chat").css({"height": "100%", "width": "unset"});
+		$(".chat").css({"height": "umset", "width": "unset"});
 		setTimeout(() => {
 			$(".mobile-message-toggler").css({"transform": "rotate(360deg"})
 		},100);
@@ -60,6 +60,8 @@ $(document).ready(() => {
 
 	$(".toggle-messages").click(() => {
 		if($(".toggle-chevron").find(".fa-chevron-down").hasClass("rotate-up")){
+			//Match mobile and click the toggler
+			if(window.matchMedia("(max-width: 750px)").matches)	$(".mobile-message-toggler").click();
 			$(".toggle-chevron").find(".fa-chevron-down").addClass("rotate-down").removeClass("rotate-up");
 			$(".chat-section-body").hide();
 			deleteSelectedChat();
