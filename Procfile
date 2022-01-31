@@ -1,1 +1,1 @@
-web: php artisan migrate && yes && php artisan serve && yes
+web: php artisan serve
