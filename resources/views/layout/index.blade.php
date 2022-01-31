@@ -288,7 +288,7 @@
       	<div class="row">
           <div class="footer-wrapper">
             <div class="col-md-3 col-sm-3">
-              <a href=""><img src="images/logo-black.png" alt="" class="footer-logo"></a>
+              <a href=""><img src="images/logo.png" alt="" class="footer-logo"> Friend Finder</a>
               <ul class="list-inline social-icons">
               	<li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
               	<li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
@@ -341,12 +341,7 @@
     <div class = "preview-medias-container" style = "overflow-y: auto; padding-top: 30px; padding-bottom: 30px">
       <span class = "close">&times;</span>
       <div class = "content-container container">
-        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
-        <img src="/storage/1641142183.PNG" alt="post-image" class="img-responsive post-image">
+  
       </div>
     </div>
 
