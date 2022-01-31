@@ -285,7 +285,7 @@ function renderChat()
 			chatHtml += `<li class="active chat-list-item" data-id = "${item.id}">
 		                  <a href="#contact-1" data-toggle="tab">
 		                    <div class="contact">
-		                      <img src= ${users[refId].image !== null ? 'storage/images/profile' + users[refId].image : '/images/default_profile_image.png'} alt="" class="profile-photo-sm pull-left">
+		                      <img src= ${users[refId].image !== null ? users[refId].image : '/images/default_profile_image.png'} alt="" class="profile-photo-sm pull-left">
 		                      <div class="msg-preview">
 		                        <h6>${window.ucwords(users[refId].firstname + " "+ users[refId].lastname)}</h6>
 		                        <p class="text-muted message">${lastMessage}</p>
