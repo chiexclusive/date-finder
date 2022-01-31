@@ -25,13 +25,13 @@ $(document).ready(() => {
 	$(".mobile-chat-toggle").click(() => {
 		$(".chat-section").removeClass("cover");
 		$(".mobile-message-toggler").addClass("appear");
-		$(".chat").css({"height": "0%", "width": "0%"});
+		$(".chat").css({"height": "100%", "width": "unset"});
 		setTimeout(() => {
 			$(".mobile-message-toggler").css({"transform": "rotate(360deg"})
 		},100);
 	})
 	$(".mobile-message-toggler").click(() => {
-		
+		$(".toggle-chevron").find(".fa").removeClass("rotate-down").addClass("rotate-up")
 		$(".mobile-message-toggler").css({"transform": "rotate(-360deg"})
 		setTimeout(() => {
 			$(".chat-section").addClass("cover");
@@ -113,6 +113,9 @@ $(document).ready(() => {
 		await fetchUsersInformation();
 		loadChatContent(id);
 		$(".chat-content-section").addClass("show");
+
+		//Match mobile and click the toggler
+		if(window.matchMedia("(max-width: 750px)").matches)	$(".mobile-message-toggler").click();
 	})
 
 
@@ -123,6 +126,8 @@ $(document).ready(() => {
 		await refresh()
 		$(this).removeClass("rotate")
 	})
+
+
 
 	$(".chat-room").find(".refresh").click(async function (){
 		await refresh()
@@ -335,7 +340,7 @@ function  loadChatContent (endUserId)
 	$(".chat-content-section").find(".end-user-name").text(window.ucwords(users[targetId].firstname + " " + users[targetId].lastname));
 
 	//Set Image
-	let src = users[targetId].image !== null ? '/images/profile' + users[targetId].image : '/images/default_profile_image.png';
+	let src = users[targetId].image !== null ? users[targetId].image : '/images/default_profile_image.png';
 	$(".chat-content-section").find(".end-user-image").attr("src", src);
 
 	//Return for new chats

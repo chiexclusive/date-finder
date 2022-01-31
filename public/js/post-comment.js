@@ -85,7 +85,7 @@ function registerComment (index, comment, postId)
 				refreshComments(postId);
 				resolve();
 			}else if("redirect" in res){
-				window.location = "/"+ res.redirect;
+				// window.location = "/"+ res.redirect;
 			}
 		})
 	}) 
@@ -125,7 +125,7 @@ function refreshComments(postId)
 				renderComments(postId);
 				resolve();
 			}else if("redirect" in res){
-				window.location = "/"+ res.redirect;
+				// window.location = "/"+ res.redirect;
 			}
 		})
 	}) 
@@ -139,7 +139,7 @@ function renderComments (id)
 	let target = $("#comment_"+id);
 	let loaded = $(target).parent().parent().find(".view-more-comment").attr("data-loaded");
 	comments.forEach((comment, commentId) => {
-		if(counter < loaded){
+		if(counter < parseInt(loaded)){
 			html += `
 
 				<div class="post-comment">
@@ -193,7 +193,7 @@ function registerCommentLike(commentId, postId)
 				refreshComments(postId);
 				resolve();
 			}else if("redirect" in res){
-				window.location = "/"+ res.redirect;
+				// window.location = "/"+ res.redirect;
 			}
 		})
 	})

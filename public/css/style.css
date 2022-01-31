@@ -3042,7 +3042,6 @@ html{
 .chat{
   position: fixed;
   bottom: 0px;
-  right: 0px;
   display: flex;
   align-items: flex-end;
   z-index: 1;
@@ -3068,6 +3067,7 @@ html{
   padding: 10px;
 
 }
+
 
 .chat-section-header>div:nth-child(2){
   display: flex;
@@ -3171,10 +3171,13 @@ html{
 }
 
 @media screen and (max-width: 750px){
+  .show-chat{
+    display: block;
+  }
   .chat-content-section.show{
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     z-index: 999999;
     max-height: 100%;
     display: block;
@@ -3186,12 +3189,13 @@ html{
   }
 
   .chat-section{
-    width: 0%;
+    width: 100%;
     position: absolute;
     bottom: 0;
     display: block;
     right: 0;
-    height: 0%;
+    height: 100%;
+    display: none;
     max-height: 100%;
     border-radius: unset;
     transition: width .4s ease, height .4s ease;
@@ -3228,6 +3232,7 @@ html{
   .chat-section.cover{
     width: 100%;
     height: 100%;
+    display: block;
   }
 
 }

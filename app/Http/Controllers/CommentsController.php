@@ -13,8 +13,10 @@ class CommentsController extends Controller
 
 	public function __construct()
 	{	
-		//return action to redirect if the user is not logged in
-		if(auth()->user() == null || auth()->user() == "" || auth()->user() == undefined) return exit(json_encode(['success' => false, 'redirect'=> "login"]));
+  //       print_r(auth()->user());
+  //       exit();
+		// //return action to redirect if the user is not logged in
+		// if(auth()->user() == null || auth()->user() == "" || auth()->user() == undefined) return exit(json_encode(['success' => false, 'redirect'=> "login"]));
 	}
 
 
@@ -31,7 +33,7 @@ class CommentsController extends Controller
 
     	//Store the activity
         $activity = new ActivitiesController();
-        $activity->store("Commented a post");
+        $activity->store("Commented on a post");
 
     	return json_encode(['success' => true]);
     }

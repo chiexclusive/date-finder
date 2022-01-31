@@ -204,7 +204,7 @@ Route::post('/reset-password', function (Request $request) {
 //Register comment
 Route::post("/post/{postId}/comment", [CommentsController::class, "store"])->name("comments.store");
 
-//Register comment
+//Get comment
 Route::post("/post/{id}/comment/get", [CommentsController::class, "getComment"])->name("comments.get");
 
 
