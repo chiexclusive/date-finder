@@ -138,8 +138,9 @@ function renderComments (id)
 	let html = "";
 	let target = $("#comment_"+id);
 	let loaded = $(target).parent().parent().find(".view-more-comment").attr("data-loaded");
+	let isEmpty = $(target).parent().parent().find(".view-more-comment").parent().prev().html() == "" ? true : false
 	comments.forEach((comment, commentId) => {
-		if(counter < parseInt(loaded)){
+		if(!isEmpty && counter < parseInt(loaded)){
 			html += `
 
 				<div class="post-comment">
