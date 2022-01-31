@@ -22,7 +22,9 @@ class Post extends Model
         'card',
         'image',
         'video', 
-        'visibility'
+        'visibility',
+        'video_public_id',
+        'image_public_id'
     ];
 
     //Many to one relationship to users

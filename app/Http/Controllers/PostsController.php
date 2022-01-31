@@ -111,26 +111,32 @@ class PostsController extends Controller
         }
 
         $imageNames = [];
+        $imagePublicIds = [];
+
         $videoNames = [];
+        $videoPublicIds = [];
 
 
         if($request->files->count() !== 0){
 
             foreach($request->files as $key => $file){
-                
+                require(dirname(__FILE__)."/../../../cloudinary.php");
+
                 $mime = $request->file($key)->getMimeType();
-                $fileName = $request->file($key)->getClientOriginalName();
-                $ext = $request->file($key)->getClientOriginalExtension();
 
-                $imageName = preg_match('(image)', $mime) ? time().".".$ext : null;
-                $videoName = !preg_match('(image)', $mime) ? time().".".$ext : null;
+                $imageName = preg_match('(image)', $mime) ? time() : null;
+                $videoName = !preg_match('(image)', $mime) ? time() : null;
 
-                if($imageName !== null) array_push($imageNames, $imageName);
-                if($videoName !== null) array_push($videoNames, $videoName);
+                $uploaded = $cloudinary->uploadApi()->upload($request->file('image')->getPathName());
 
-                $fileToStore = $imageName === null ? $videoName : $imageName;
-
-                $request->file($key)->storeAs('public',  $fileToStore);
+                if($imageName !== null){
+                    array_push($imageNames, $uploaded['secure_url']);
+                    array_push($imagePublicIds, $uploaded['public_id']);
+                }
+                if($videoName !== null){
+                    array_push($videoNames, $uploaded['secure_url']);
+                    array_push($videoPublicIds, $uploaded['public_id'])
+                }
             }
 
         }
@@ -139,7 +145,9 @@ class PostsController extends Controller
         auth()->user()->posts()->create([
             "message" => $request->message,
             "image" => json_encode($imageNames),
+            "image_public_id" => json_decode($imagePublicIds),
             "video" => json_encode($videoNames),
+            "video_public_id" => json_encode($videoPublicIds),
             "visibility" => $request->postVisibility
         ]);   
 
@@ -190,7 +198,29 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //Delete post
+
+        require(dirname(__FILE__)."/../../../cloudinary.php");
+
+        
         $post = Post::where("id", "=", $id);
+        if($post->get()[0]['image_public_id'] !== null){
+            $ids = json_decode($post->get()[0]['image_public_id']);
+
+            foreach($ids as $id){
+                $cloudinary->uploadApi()->destroy($id)
+            }
+        }
+
+
+        if($post->get()[0]['video_public_id'] !== null){
+            $ids = json_decode($post->get()[0]['video_public_id']);
+
+            foreach($ids as $id){
+                $cloudinary->uploadApi()->destroy($id)
+            }
+        }
+
+
         $post->delete();
         return back();
     }

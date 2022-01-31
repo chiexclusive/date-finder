@@ -18,7 +18,9 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id')->index()->constraint()->onDelete("cascade");
             $table->string('message')->nullable();
             $table->string('image')->nullable();
+            $table->string('image_public_id')->nullable();
             $table->string('video')->nullable();
+            $table->string('video_public_id')->nullable();
             $table->string('visibility');
             $table->timestamps();
         });

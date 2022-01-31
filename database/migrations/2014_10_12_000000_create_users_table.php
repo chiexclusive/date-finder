@@ -24,7 +24,9 @@ class CreateUsersTable extends Migration
             $table->string('country');
             $table->string('bio')->nullable();
             $table->string('image')->nullable();
+            $table->string('image_public_id')->nullable();
             $table->string('cover_image')->nullable();
+            $table->string('cover_image_public_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('interest')->nullable();

@@ -112,7 +112,7 @@
               <li class="dropdown">
                 <a href= "#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <span class="profile-image-container">
-                    <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.auth()->user()->image)}}" alt="profile image" class="profile-image">
+                    <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : auth()->user()->image}}" alt="profile image" class="profile-image">
                   </span>
                 </a>
                 <ul class="dropdown-menu logout">
@@ -228,7 +228,7 @@
         <div style = "display: flex; align-items: center">
           <span class = "fa fa-arrow-left mobile-chat-toggle display" style = "cursor: pointer"></span>
 
-          <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.auth()->user()->image)}}" alt="profile image" alt="user" class="profile-photo-sm">
+          <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : auth()->user()->image}}" alt="profile image" alt="user" class="profile-photo-sm">
         </div>
         <div>
           <span>Messages</span>

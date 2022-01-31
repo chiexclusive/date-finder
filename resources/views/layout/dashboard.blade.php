@@ -10,7 +10,7 @@
     			<div class="col-md-3 static" style = "padding-top: 60px;">
             @auth
             <div class="profile-card">
-                <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.auth()->user()->image)}}" alt="profile image" alt="user" class="profile-photo">
+                <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : auth()->user()->image}}" alt="profile image" alt="user" class="profile-photo">
                 <h5><a href="{{route('timeline', auth()->user()->id)}}" class="text-white">{{ucwords(auth()->user()->firstname) ." ". ucwords(auth()->user()->lastname)}}</a></h5>
                 <a href="#" class="text-white"><i class="ion ion-android-person-add"></i> {{$followers->where("user_id", "=", auth()->user()->id)->count() == 1 ? $followers->where("user_id", "=", auth()->user()->id)->count() . " follower" : $followers->where("user_id", "=", auth()->user()->id)->count() . " followers"}}</a>
             </div><!--profile card ends-->
@@ -37,7 +37,7 @@
                   @if($friend_request !== null && $friend_request->count() > 0)
                     @foreach($friend_request as $friend)
                       <div class="follow-user">
-                        <img src="{{$friend->user()->get()[0]->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.$friend->user()->get()[0]->image)}}" alt="" class="profile-photo-sm pull-left">
+                        <img src="{{$friend->user()->get()[0]->image === null ? asset('/images/default_profile_image.png') : $friend->user()->get()[0]->image}}" alt="" class="profile-photo-sm pull-left">
                         <div style = "text-align: left">
                           <h5><a href="timeline.html">{{ucwords($friend->user()->get()[0]->firstname) . " ". ucwords($friend->user()->get()[0]->lastname)}}</a></h5>
                           <a href = "{{route('user.accept', $friend->user()->get()[0]->id)}}"><button class = "btn btn-success" href="#" class="text-green">Accept</button></a>
@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-12 pl-3 pr-3">
                       <div class="form-group w-100 create-post-toggle-container">
-                        <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.auth()->user()->image)}}" alt="profile image" alt="user" class="profile-photo-sm">
+                        <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : auth()->user()->image}}" alt="profile image" alt="user" class="profile-photo-sm">
                         <div class = "create-post-toggle" data-toggle = "modal" data-target="#createPostModal">What's on your mind?</div>
                       </div>
                     </div>
@@ -79,7 +79,7 @@
                     <div class="modal-body">
                       @auth
                       <div class = "create-post-head-content">
-                        <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.auth()->user()->image)}}" alt="profile image" alt="user"class="profile-photo-sm">
+                        <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : auth()->user()->image}}" alt="profile image" alt="user"class="profile-photo-sm">
                         <div style = "padding-left: 10px">
                           <div>{{ucwords(auth()->user()->firstname ." ". auth()->user()->lastname)}}</div>
                           <div class = "privacy-box" data-toggle = "modal" data-target="#modifyPrivacySettings">
@@ -192,7 +192,7 @@
               @if(count($suggestions) > 0)
                 @foreach($suggestions as $suggestion)
                   <div class="follow-user">
-                    <img src="{{$suggestion->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.$suggestion->image)}}" alt="profile image" alt="user"class="profile-photo-sm pull-left">
+                    <img src="{{$suggestion->image === null ? asset('/images/default_profile_image.png') : $suggestion->image}}" alt="profile image" alt="user"class="profile-photo-sm pull-left">
                     <div>
                       <h5><a href="{{route('timeline', $suggestion->id)}}">{{ucwords($suggestion->firstname." ".$suggestion->lastname)}}</a></h5>
                        <form action = "{{route('user.add', $suggestion->id)}}" method = "post">

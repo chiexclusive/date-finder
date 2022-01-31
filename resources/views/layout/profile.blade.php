@@ -12,7 +12,7 @@
           <div class="timeline-cover-container">
             No cover image
             @if($user->cover_image !== null)
-              <img src="{{asset('storage/images/cover/'.$user->cover_image)}}" alt="cover image" class = "cover-photo" />
+              <img src="{{$user->cover_image}}" alt="cover image" class = "cover-photo" />
             @endif
           </div>
           @if(auth()->user() !== null && auth()->user()->id == $user->id)
@@ -35,7 +35,7 @@
                       </div>
                       @endif
                     
-                      <img src="{{$user->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.$user->image)}}" alt="profile image" class="img-responsive profile-photo">
+                      <img src="{{$user->image === null ? asset('/images/default_profile_image.png') : $user->image}}" alt="profile image" class="img-responsive profile-photo">
                     </div>
                     <h3>{{ucwords($user->firstname) ." ". ucwords($user->lastname)}}</h3>
                     @if($user->bio !== null)
@@ -102,7 +102,7 @@
                 <span class = "fa fa-camera"></span>
               </div>
               @endif
-             <img src="{{$user->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.$user->image)}}" alt="profile image" alt="user" class="img-responsive profile-photo">
+             <img src="{{$user->image === null ? asset('/images/default_profile_image.png') : $user->image}}" alt="profile image" alt="user" class="img-responsive profile-photo">
             </div>
             <h4 style = "background:white; padding-top: 15px;">{{ucwords($user->firstname) ." ". ucwords($user->lastname)}}</h4>
             <p class="text-muted bio-text">{{$user->bio}}</p>

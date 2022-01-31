@@ -21,12 +21,12 @@
                     <div class="col-md-6 col-sm-6">
                       <div class="friend-card">
                         @if($follower->cover_image !== null)
-                          <img src="{{asset('storage/images/cover/'.$follower->cover_image)}}" alt="cover image" class = "img-responsive cover" />
+                          <img src="{{$follower->cover_image}}" alt="cover image" class = "img-responsive cover" />
                          @else
                           <div class="img-responsive cover no-cover">No Cover Image</div>
                          @endif
                         <div class="card-info">
-                           <img src="{{$follower->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.$follower->image)}}" alt="profile image" alt="user" class="profile-photo-lg">
+                           <img src="{{$follower->image === null ? asset('/images/default_profile_image.png') : $follower->image}}" alt="profile image" alt="user" class="profile-photo-lg">
        
                           <div class="friend-info">
                             

@@ -32,7 +32,9 @@ class User extends Authenticatable
         'city',
         'country',
         'image',
-        'cover_image'
+        'cover_image',
+        'cover_image_public_id',
+        "image_public_id"
     ];
 
     /**

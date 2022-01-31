@@ -14,7 +14,7 @@
                   <div class="row">
                     <div class="col-12 pl-3 pr-3">
                       <div class="form-group w-100 create-post-toggle-container">
-                        <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.auth()->user()->image)}}" alt="profile image" alt="user" class="profile-photo-sm">
+                        <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : auth()->user()->image}}" alt="profile image" alt="user" class="profile-photo-sm">
                         <div class = "create-post-toggle" data-toggle = "modal" data-target="#createPostModal">What's on your mind?</div>
                       </div>
                     </div>
@@ -34,7 +34,7 @@
                       <div class="modal-body">
                         @auth
                         <div class = "create-post-head-content">
-                          <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.auth()->user()->image)}}" alt="profile image" alt="user"class="profile-photo-sm">
+                          <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : auth()->user()->image}}" alt="profile image" alt="user"class="profile-photo-sm">
                           <div style = "padding-left: 10px">
                             <div>{{ucwords(auth()->user()->firstname ." ". auth()->user()->lastname)}}</div>
                             <div class = "privacy-box" data-toggle = "modal" data-target="#modifyPrivacySettings">
@@ -154,7 +154,7 @@
 
 
                 <div class="post-container">
-                <img src="{{$post->user->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.$post->user->image)}}" alt="profile image" alt="user"class="profile-photo-md pull-left">
+                <img src="{{$post->user->image === null ? asset('/images/default_profile_image.png') : $post->user->image}}" alt="profile image" alt="user"class="profile-photo-md pull-left">
                 <div class="post-detail">
                     <div class="user-info">
                         <div>
@@ -231,14 +231,14 @@
                                     @if($counter <= 5)
                                         @if($counter == 5)
                                             <div class = "media{{$counter}} post-media" style = "position: relative">
-                                                <img src="{{asset('/storage/' . $image)}}" alt="post-image" class="img-responsive post-image">
+                                                <img src="{{$image}}" alt="post-image" class="img-responsive post-image">
                                                 @if(count(json_decode($post->image)) > 5)
                                                     <div class = 'post-media-remains'>+ {{count(json_decode($post->image)) + count(json_decode($post->video)) - 5}}</div>
                                                 @endif
                                             </div>                                            
                                         @else
                                             <div class = "media{{$counter}} post-media">
-                                                <img src="{{asset('/storage/' . $image)}}" alt="post-image" class="img-responsive post-image">
+                                                <img src="{{$image}}" alt="post-image" class="img-responsive post-image">
                                             </div>
                                         @endif
                                     @endif
@@ -251,7 +251,7 @@
                                             @if($counter == 5)
                                                 <div class = "media{{$counter}} post-media" style = "position: relative">
                                                     <video muted = "muted" name="media" class = "img-responsive post-video">
-                                                      <source src="{{asset('/storage/' . $video)}}" type="video/mp4">
+                                                      <source src="{{$video}}" type="video/mp4">
                                                     </video>
                                                     @if(count(json_decode($post->image)) > 5)
                                                         <div class = 'post-media-remains'>+ {{count(json_decode($post->image)) - 5}}</div>
@@ -260,7 +260,7 @@
                                             @else
                                                 <div class = "media{{$counter}} post-media">
                                                      <video muted = "muted"  name="media" class = "img-responsive post-video">
-                                                      <source src="{{asset('/storage/' . $video)}}" type="video/mp4">
+                                                      <source src="{{$video}}" type="video/mp4">
                                                     </video>
                                                 </div>
                                             @endif
@@ -281,7 +281,7 @@
                                 @foreach($comments as $comment)
                                     <div class="post-comment">
                                         <div>
-                                            <img src="{{$comment->user()->get()[0]->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.$comment->user()->get()[0]->image)}}" alt="" class="profile-photo-sm">
+                                            <img src="{{$comment->user()->get()[0]->image === null ? asset('/images/default_profile_image.png') :$comment->user()->get()[0]->image}}" alt="" class="profile-photo-sm">
                                         </div>
                                         <p style = "position: relative;">
                                             <a href="{{route('timeline', $comment->user()->get()[0]->id)}}" class="profile-link">
@@ -302,7 +302,7 @@
                             @auth
                             <div class="post-comment">
                                 <div>
-                                    <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : asset('storage/images/profile/'.auth()->user()->image)}}" alt="profile image" alt="user"class="profile-photo-sm">
+                                    <img src="{{auth()->user()->image === null ? asset('/images/default_profile_image.png') : auth()->user()->image}}" alt="profile image" alt="user"class="profile-photo-sm">
                                 </div>
                                     <input type="text" class="form-control post-comment-field" placeholder="Post a comment" data-post-id = "{{$post->id}}">
                             </div>

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+
 class UsersController extends Controller
 {
     /**
@@ -129,6 +130,8 @@ class UsersController extends Controller
     //Upload profile image
     public function uploadProfileImage(Request $request)
     {
+        require(dirname(__FILE__)."/../../../cloudinary.php");
+
 
 
         if($request->file('image') == null){
@@ -147,12 +150,12 @@ class UsersController extends Controller
 
         $fileToStore = time() . "." . $ext;
 
-        $request->file('image')->storeAs('public/images/profile',  $fileToStore);
-
+        $uploaded = $cloudinary->uploadApi()->upload($request->file('image')->getPathName());
 
         //Store the post 
         auth()->user()->update([
-            "image" => $fileToStore
+            "image" => $uploaded['secure_url'],
+            "public_id" => $uploaded['public_id']
         ]);   
 
         //Send a response
@@ -164,6 +167,7 @@ class UsersController extends Controller
     //Upload profile image
     public function uploadProfileCover(Request $request)
     {
+        require(dirname(__FILE__)."/../../../cloudinary.php");
 
 
         if($request->file('image') == null){
@@ -177,17 +181,14 @@ class UsersController extends Controller
 
         if(!preg_match('(image)', $mime)) return json_encode(['success' => false]);
 
-        $ext = $request->file('image')->getClientOriginalExtension();
-
-
-        $fileToStore = time() . "." . $ext;
-
-        $request->file('image')->storeAs('public/images/cover',  $fileToStore);
+        if(auth()->user()['cover_image'] !== null)  $cloudinary->uploadApi()->destroy(auth()->user()['cover_image_public_id']);
+        $uploaded = $cloudinary->uploadApi()->upload($request->file('image')->getPathName());
 
 
         //Store the post 
         auth()->user()->update([
-            "cover_image" => $fileToStore
+            "cover_image" => $uploaded['secure_url'],
+            "cover_image_public_id" => $uploaded['public_id']
         ]);   
 
         //Send a response
