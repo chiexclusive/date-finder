@@ -3254,6 +3254,7 @@ html{
   width: 100%;
   padding: 20px;
   border-top: 1px solid #e0e0e0;
+  background: white;
 }
 
 .chat-content-section .emojionearea, .emojionearea.form-control{
@@ -3411,6 +3412,13 @@ html{
 }
 
 @media screen and (max-width: 750px){
+
+  .chat-content-section .send-message-container{
+    position: fixed;
+    bottom: 0;
+    background: white;
+  }
+
   .dropdown-menu.logout{
       top: -30px;
       left: 20px;

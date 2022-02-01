@@ -10,7 +10,7 @@ class CommentsLikesController extends Controller
 	public function __construct()
 	{	
 		//return action to redirect if the user is not logged in
-		if(auth()->user() == null || auth()->user() == "" || auth()->user() == undefined) return exit(json_encode(['success' => false, 'redirect'=> "login"]));
+		// if(auth()->user() == null || auth()->user() == "" || auth()->user() == undefined) return exit(json_encode(['success' => false, 'redirect'=> "login"]));
 	}
 
     public function store(Request $request, $postId, $commentId)

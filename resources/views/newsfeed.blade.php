@@ -71,7 +71,7 @@
                             </ul>
                         </div>
                     </div>
-                    @if($post->image !== null && count(json_decode($post->image)) > 0)
+                    @if($post->image !== null && count(json_decode($post->image)) > 0 || $post->video !== null && count(json_decode($post->video)) > 0)
                         <?php  
                             $class = ["one-media-grid","two-media-grid", "three-media-grid","four-media-grid","five-media-grid"];
                         ?>
@@ -99,6 +99,7 @@
 
                                 @if($counter <= 5)
                                     @foreach(json_decode($post->video) as $video)
+
                                         <?php $counter++ ?>
                                         @if($counter <= 5)
                                             @if($counter == 5)

@@ -48,7 +48,8 @@ $(document).ready(() =>{
 	})
 
 	//Like comments
-	$('.comment-container').on("click", ".comment-like-container i", async function (){
+	$('.comment-container').on("click", ".comment-like-container>i", async function (){
+		console.log("liked comment")
 		let commentId = $(this).attr("data-comment");
 		let postId = $(this).attr("data-post");
 		await registerCommentLike(commentId, postId);
