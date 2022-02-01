@@ -1,7 +1,7 @@
 "use strict";
 
 var comments = [];
-var users = {};
+var postUsers = {};
 var likes = {};
 
 
@@ -97,7 +97,7 @@ function registerComment (index, comment, postId)
 function refreshComments(postId)
 {
 	//Get all comments
-	//Get all users that made the comments
+	//Get all postUsers that made the comments
 	//Get all likes for the comments
 
 
@@ -120,7 +120,7 @@ function refreshComments(postId)
 			//Handle success
 			if(typeof res === 'object' && 'success' in res && res.success === true){
 				comments = res.data.comments;
-				users = res.data.users;
+				postUsers = res.data.users;
 				likes = res.data.likes;
 
 				renderComments(postId);
@@ -146,11 +146,11 @@ function renderComments (id)
 
 				<div class="post-comment">
                     <div>
-                        <img src="${users[comment.user_id].image === null ? '/images/default_profile_image.png' : users[comment.user_id].image}" alt="" class="profile-photo-sm">
+                        <img src="${postUsers[comment.user_id].image === null ? '/images/default_profile_image.png' : postUsers[comment.user_id].image}" alt="" class="profile-photo-sm">
                     </div>
                     <p style = "position: relative;">
-                        <a href="/profile/${users[comment.user_id].id}/timeline" class="profile-link">
-                            ${window.ucwords(users[comment.user_id].firstname)}
+                        <a href="/profile/${postUsers[comment.user_id].id}/timeline" class="profile-link">
+                            ${window.ucwords(postUsers[comment.user_id].firstname)}
                         </a> 
                         <span class = "message">${comment.comment}</span>
                         <span class = "comment-like-container">
